@@ -1,0 +1,20 @@
+name: Check TODOs
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  check-todos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install .
+      - name: Run todo-tree CI check
+        run: |
+          todo-tree ci-check --max-fixmes 0 --json
+        shell: bash
