@@ -7,3 +7,5 @@ build/
 .venv/
 venv/
 output/
+.venv_test_install/
+out/
